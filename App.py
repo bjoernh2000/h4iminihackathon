@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 def welcome():
     if request.method == "POST":
         mongo.db.posts.insert(
-            {"title": request.form["title"], "content": request.form["content"]})
+            {"title": request.form["title"], "content": request.form["content"], "name":request.form["name"]})
     posts = mongo.db.posts.find()
     # render your template html here
     return render_template("home.html", posts=posts)
